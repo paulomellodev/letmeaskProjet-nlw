@@ -1,13 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const GeneralButton = styled.button`
-  margin-top: 60px;
+type ButtonProps = {
+  isOutlined?: boolean;
+};
+
+export const GeneralButton = styled.button<ButtonProps>`
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
   background: var(--purple);
   color: var(--white);
-  padding: 0 32xp;
+  padding: 0 32px;
 
   display: flex;
   justify-content: center;
@@ -29,4 +32,12 @@ export const GeneralButton = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  ${(props) =>
+    props.isOutlined &&
+    css`
+      background: var(--white);
+      color: var(--purple);
+      border: 1px solid var(--purple);
+    `};
 `;
