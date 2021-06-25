@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { QuestionsContainer, UserContent } from "./styles";
 
 type QuestionsProps = {
@@ -6,9 +7,10 @@ type QuestionsProps = {
     name: string;
     avatar: string;
   };
+  children?: ReactNode;
 };
 
-const QuestionsComponent = ({ content, author }: QuestionsProps) => {
+const QuestionsComponent = ({ content, author, children }: QuestionsProps) => {
   return (
     <QuestionsContainer>
       <p>{content}</p>
@@ -17,7 +19,7 @@ const QuestionsComponent = ({ content, author }: QuestionsProps) => {
           <img src={author.avatar} alt={author.name} />
           <p>{author.name}</p>
         </UserContent>
-        <div></div>
+        <div>{children}</div>
       </footer>
     </QuestionsContainer>
   );

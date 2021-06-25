@@ -18,6 +18,29 @@ export const QuestionsContainer = styled.section`
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
+
+    button {
+      background: transparent;
+      border: 0;
+      &.like-button {
+        display: flex;
+        align-items: flex-end;
+        span {
+          color: var(--gray);
+          background: transparent;
+          padding: 0 10px;
+        }
+        &.liked {
+          color: var(--purple);
+          svg path {
+            stroke: var(--purple);
+          }
+        }
+      }
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
   }
 `;
 

@@ -44,6 +44,10 @@ export const Home = () => {
       return;
     }
     history.push(`/room/${roomCode}`);
+
+    if (roomRef.val().endedAt) {
+      alert("Room already closed");
+    }
   };
 
   return (
