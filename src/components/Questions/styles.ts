@@ -10,6 +10,16 @@ export const QuestionsContainer = styled.section`
   & + section {
     margin-top: 8px;
   }
+
+  &.highlighted {
+    background: #f4f0ff;
+    border: 1px solid var(--purple);
+  }
+
+  &.answered {
+    background: #dbdcdd;
+  }
+
   p {
     color: var(--gray);
   }
@@ -18,6 +28,11 @@ export const QuestionsContainer = styled.section`
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
+
+    > div {
+      display: flex;
+      gap: 16px;
+    }
 
     button {
       background: transparent;

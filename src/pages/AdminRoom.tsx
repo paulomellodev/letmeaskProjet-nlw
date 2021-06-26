@@ -1,5 +1,8 @@
 import logoImg from "../assets/images/logo.svg";
 import deleteImg from "../assets/images/delete.svg";
+import checkImg from "../assets/images/check.svg";
+import answerImg from "../assets/images/answer.svg";
+
 import {
   Container,
   HeaderContent,
@@ -42,6 +45,18 @@ export const AdminRoom = () => {
     }
   };
 
+  const handleCheckQuestionAsAnswered = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    });
+  };
+
+  const handleHighlightQuestion = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighLighted: true,
+    });
+  };
+
   return (
     <Container>
       <HeaderContainer>
@@ -69,7 +84,28 @@ export const AdminRoom = () => {
                 key={question.id}
                 author={question.author}
                 content={question.content}
+                isAnswered={question.isAnswered}
+                isHighLighted={question.isHighLighted}
               >
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img
+                        src={checkImg}
+                        alt="Marcar  pergutna como respondida"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque a Pergunta" />
+                    </button>
+                  </>
+                )}
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
